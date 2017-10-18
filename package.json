@@ -1,0 +1,24 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Store Management Program",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mark7389/Bamazon.git"
+  },
+  "author": "Mark Soliman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mark7389/Bamazon/issues"
+  },
+  "homepage": "https://github.com/mark7389/Bamazon#readme",
+  "dependencies": {
+    "console.table": "^0.9.1",
+    "inquirer": "^3.3.0",
+    "mysql": "^2.15.0"
+  }
+}
