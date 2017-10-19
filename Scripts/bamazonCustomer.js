@@ -7,7 +7,7 @@ const connection = sql.createConnection({
 	host: "localhost",
 	port:3306,
 	user:"root",
-	password: "",
+	password: "@%87237690!",
 	database: "bamazon",
 
 });
@@ -30,7 +30,28 @@ function onStart(){
 		askCustomer();
 	});
 
+}
 
+function Next(){
+
+	inquirer.prompt(
+		[{
+			type:"list",
+			message: "What would you like to do next?",
+			choices: ["Make another purchase", "Quit"],
+			name:"action",
+		}]
+		).then(function(ans){
+
+			if(ans.action === "Quit"){
+				connection.end();
+			}
+			else{
+
+				onStart();
+			}
+
+		});
 }
 
 function askCustomer(){
@@ -55,14 +76,16 @@ function askCustomer(){
 					num = response[0].stock_quantity - ans.quantity;
 					updateQuantity(ans.id, num);
 					console.log("\nPurchase Cost: $"+ans.quantity*response[0].price+" ...checking out... ");
+					
 				}
 				else{
 
 					console.log("\nSorry the quantity you selected is not available"+ 
 						        "\n\nStock of item is depleted\nAvaialble Quantity: "+response[0].stock_quantity);
+					
 				}
 
-				
+				Next();
 			});
 
 	});
@@ -75,8 +98,7 @@ function updateQuantity(id, num){
 	connection.query("UPDATE products SET ? WHERE ?", [{stock_quantity: num},{"item_id": id}], function(err, response){
 
 		if(err) throw err;
-		console.log(response.affectedRows);
-
+		//console.log(response.affectedRows);
 	});
 
 }
