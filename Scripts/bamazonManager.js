@@ -146,8 +146,63 @@ function updateInv(){
 
 
 }
+function returnProducts(){
+
+	var arr = [];
+	connection.query("SELECT product_name FROM products", function(err, res){
+
+		res.forEach(function(row){
+
+			arr.push(row.product_name);
+		});
+
+		return arr;
+
+	});
+
+}
 
 function addNewProduct(){
 
+		var arr = returnProducts();
+
+		inquirer.prompt(
+			[
+			{
+				type: "input",
+				message: "Please Enter New Product Name",
+				name: "name",
+				validate: function(value){
+
+					if(arr.indexOf(value) > -1){
+						return true;
+					}
+					else{
+						return false;
+					}
+				}
+			},
+			{
+				type: "input",
+				message: "Please Enter Department Name",
+				name: "Department",
+			},
+			{
+				type: "input",
+				message:"Please Enter Unit Price",
+				name: "price",
+			},
+			{
+				type : "input",
+				message: "Please Enter Stock Quantity",
+				name: "quantity",
+			},
+			]).then(function(ans){
+					var post = {product_name: ans.name, product_department: ans.Department, price: ans.price, stock_quantity:ans.stock_quantity};
+					connection.query("INSERT INTO products SET ?", post, function(err, response){
+						if(err) throw err;
+						console.log("Product addition successful");
+					});
+			});
 
 }
