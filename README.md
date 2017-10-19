@@ -10,16 +10,16 @@ Bamazon is a node CLI app that simulates a storefront managing application.
 **Customer View:**
 ![Customer View Images](https://github.com/mark7389/Bamazon/blob/dev/images/mark%40eagle-D9842:%20~-Coding-homeworks-Bamazon-Scripts_005.png)
 **Manager View:**
-![Manager View Images](images/mark@eagle-D9842: ~-Coding-homeworks-Bamazon-Scripts_007.png)
+![Manager View Images](https://github.com/mark7389/Bamazon/blob/dev/images/mark%40eagle-D9842:%20~-Coding-homeworks-Bamazon-Scripts_007.png)
 Products For Sale:
-![Manager View Images](images/mark@eagle-D9842: ~-Coding-homeworks-Bamazon-Scripts_008.png)
+![Manager View Images](https://github.com/mark7389/Bamazon/blob/dev/images/mark%40eagle-D9842:%20~-Coding-homeworks-Bamazon-Scripts_008.png)
 Low Inventory:
-![Manager View Images](images/mark@eagle-D9842: ~-Coding-homeworks-Bamazon-Scripts_009.png)
+![Manager View Images](https://github.com/mark7389/Bamazon/blob/dev/images/mark%40eagle-D9842:%20~-Coding-homeworks-Bamazon-Scripts_009.png)
 Update Inventory
-![Manager View Images](images/mark@eagle-D9842: ~-Coding-homeworks-Bamazon-Scripts_010.png)
+![Manager View Images](https://github.com/mark7389/Bamazon/blob/dev/images/mark%40eagle-D9842:%20~-Coding-homeworks-Bamazon-Scripts_010.png)
 
 SQL Snippet:
-	![SQL IMAGE](images/mark@eagle-D9842: ~-Coding-homeworks-Bamazon-Scripts_012.png)
+	![SQL IMAGE](https://github.com/mark7389/Bamazon/blob/dev/images/mark%40eagle-D9842:%20~-Coding-homeworks-Bamazon-Scripts_012.png)
 
 Commands to run application:
 
