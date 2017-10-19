@@ -69,13 +69,14 @@ function askCustomer(){
 	},
 	]).then(function(ans){
 
-			connection.query("SELECT stock_quantity, price FROM products WHERE ?", {"item_id": ans.id}, function(err, response){
+			connection.query("SELECT stock_quantity, price, product_sales FROM products WHERE ?", {"item_id": ans.id}, function(err, response){
 				var num = 0;
+				var totalCost = ans.quantity*response[0].price;
 				if(ans.quantity <= response[0].stock_quantity){
 
 					num = response[0].stock_quantity - ans.quantity;
 					updateQuantity(ans.id, num);
-					console.log("\nPurchase Cost: $"+ans.quantity*response[0].price+" ...checking out... ");
+					console.log("\nPurchase Cost: $"+totalCost+" ...checking out... ");
 					
 				}
 				else{
@@ -83,6 +84,22 @@ function askCustomer(){
 					console.log("\nSorry the quantity you selected is not available"+ 
 						        "\n\nStock of item is depleted\nAvaialble Quantity: "+response[0].stock_quantity);
 					
+				}
+				if(response[0].product_sales === null){
+
+					connection.query("UPDATE products SET ? WHERE ?", [{product_sales: totalCost},{item_id : ans.id}], function(err, response){
+						if(err) throw err;
+
+					});
+				}
+				else{
+
+					var totalSales = totalCost + response[0].product_sales;
+					connection.query("UPDATE products SET ? WHERE ?", [{product_sales: totalSales},{item_id : ans.id}], function(err, response){
+						if(err) throw err;
+
+					});
+
 				}
 
 				Next();

@@ -12,5 +12,3 @@ VALUES ("Pegasus Laptop", "Electronics", 320, 30),
 ("Soda", "Food&Beverage", 1.99, 600),
 ("Biscuits", "Food&Beverage", 0.99, 5000);
 
-
-INSERT INTO departments ()

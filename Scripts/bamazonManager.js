@@ -42,7 +42,7 @@ function onStart(){
 			case "Update Inventory": updateInv();
 			break;
 			
-			case "Add New Product": addNewProduct();
+			case "Add New Product": returnProducts(addNewProduct);
 			break;
 
 			case "Quit": connection.end();
@@ -146,7 +146,7 @@ function updateInv(){
 
 
 }
-function returnProducts(){
+function returnProducts(func){
 
 	var arr = [];
 	connection.query("SELECT product_name FROM products", function(err, res){
@@ -155,16 +155,15 @@ function returnProducts(){
 
 			arr.push(row.product_name);
 		});
-
-		return arr;
+		
+		func(arr);
 
 	});
 
 }
 
-function addNewProduct(){
 
-		var arr = returnProducts();
+function addNewProduct(arr){
 
 		inquirer.prompt(
 			[
@@ -172,15 +171,6 @@ function addNewProduct(){
 				type: "input",
 				message: "Please Enter New Product Name",
 				name: "name",
-				validate: function(value){
-
-					if(arr.indexOf(value) > -1){
-						return true;
-					}
-					else{
-						return false;
-					}
-				}
 			},
 			{
 				type: "input",
@@ -198,10 +188,11 @@ function addNewProduct(){
 				name: "quantity",
 			},
 			]).then(function(ans){
-					var post = {product_name: ans.name, product_department: ans.Department, price: ans.price, stock_quantity:ans.stock_quantity};
+					var post = {product_name: ans.name, department_name: ans.Department, price: ans.price, stock_quantity:ans.quantity};
 					connection.query("INSERT INTO products SET ?", post, function(err, response){
 						if(err) throw err;
 						console.log("Product addition successful");
+						onStart();
 					});
 			});
 
