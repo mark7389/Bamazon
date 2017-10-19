@@ -7,7 +7,7 @@ const connection = sql.createConnection({
 	host: "localhost",
 	port:3306,
 	user:"root",
-	password: "@%87237690!",
+	password: "",
 	database: "bamazon",
 
 });

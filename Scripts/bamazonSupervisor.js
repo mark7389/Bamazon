@@ -8,6 +8,6 @@ require("console.table");
 //if view departments...join products at product sales with departments table
 //calculate profit by subtracting over head costs from product sales(working in customer file)
 //display joined table plus profits column
-//if add new department
+//else if add new department
 //inquirer to get department info
 //insert into departments table with profits null and product sales 0 in products table
