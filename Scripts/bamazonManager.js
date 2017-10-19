@@ -96,13 +96,12 @@ function updateInv(){
 
 				arr.push(row.product_name);
 			});
-
+			
 			inquirer.prompt([
 
 				{
-					type:"list",
-					message:"Which product would you like to update",
-					choices: arr,
+					type:"input",
+					message:"Which product would you like to update/Please enter product name",
 					name: "choice",
 				},
 				{
@@ -121,7 +120,7 @@ function updateInv(){
 
 				if(ans.action === "add"){
 
-					connection.query("UPDATE products SET ? WHERE ?", [{stock_quantity: (response[arr.indexOf(ans.choice)].stock_quantity + ans.quantity)},{product_name: ans.choice}], function(err, response){
+					connection.query("UPDATE products SET ? WHERE ?", [{stock_quantity: (response[arr.indexOf(ans.choice)].stock_quantity + parseInt(ans.quantity))},{product_name: ans.choice}], function(err, response){
 
 						if(err) throw err;
 						console.log("\n"+ans.choice+" @ row "+response.affectedRows + " was updated!");
