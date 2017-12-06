@@ -38,7 +38,7 @@ Commands to run application:
 
 ---**Node bamazonManager.js**---
 
-*comming soon bamazonSupervisor.js*
+*coming soon bamazonSupervisor.js*
 		
 
 
